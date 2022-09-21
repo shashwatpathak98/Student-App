@@ -1,0 +1,102 @@
+<div class="container p-3 m-12 justify-content-center">
+    <div class="card shadow p-5">
+      <div class="card-body w-50 m-auto">
+        <h5 class="card-title mb-2 text-center">Student Registration Update Form</h5>
+        <h6 class="card-subtitle mb-4 text-muted text-center">
+          Please fill all the details
+        </h6>
+        <div class="row">
+          <form (onSubmit)="onSubmit()" #registerstudent="ngForm">
+            <div class="mb-3">
+              <label for="rollNo" class="form-label">Student Roll Number</label>
+              <input
+                type="number"
+                [(ngModel)]="student.rollNo"
+                class="form-control"
+                id="rollNo"
+                name="rollNo"
+                placeholder="Please enter student roll number"
+                #n="ngModel"
+                min="1"
+                required
+                readonly
+              />
+              <div ng-message="min"></div>
+              <div
+                *ngIf="n.touched && n.invalid"
+                class="alert alert-danger !important"
+              >
+                Roll number is required!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Student Name</label>
+              <input
+                type="text"
+                [(ngModel)]="student.name"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder="Please enter student name"
+                required
+                #name="ngModel"
+                pattern="[a-zA-Z( )]+"
+                ng-pattern-restrict
+              />
+  
+              <div
+                *ngIf="name.touched && name.invalid"
+                class="alert alert-danger !important"
+              >
+                Student name is required!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="standard" class="form-label">Standard</label>
+              <input
+                type="text"
+                [(ngModel)]="student.standard"
+                class="form-control"
+                id="standard"
+                name="standard"
+                placeholder="Please enter your standard"
+                required
+                #standard="ngModel"
+              />
+              <div
+                *ngIf="standard.touched && standard.invalid"
+                class="alert alert-danger !important"
+              >
+                Standard is required!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="schoolName" class="form-label">School Name</label>
+              <input
+                type="text"
+                [(ngModel)]="student.schoolName"
+                class="form-control"
+                id="schoolName"
+                name="schoolName"
+                placeholder="Please Enter School Name"
+                required
+                #schoolName="ngModel"
+              />
+              <div
+                *ngIf="schoolName.touched && schoolName.invalid"
+                class="alert alert-danger !important"
+              >
+              School name is required!
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!registerstudent.form.valid">
+                Update Student
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
